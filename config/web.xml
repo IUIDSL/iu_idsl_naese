@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+  version="2.4">
+
+  <display-name>edu.indiana.soic.ccrg.jena Web Apps</display-name>
+  <description>edu.indiana.soic.ccrg.jena Web Apps</description>
+
+  <servlet>
+    <servlet-name>naese</servlet-name>
+    <servlet-class>edu.indiana.soic.ccrg.jena.naese_servlet</servlet-class>
+    <init-param><param-name>APPNAME</param-name>
+      <param-value>Naese</param-value></init-param>
+    <init-param><param-name>DBDIR</param-name>
+      <param-value>/home/data/naese/data</param-value></init-param>
+    <init-param><param-name>DBNAME</param-name>
+      <param-value>naese</param-value></init-param>
+    <init-param><param-name>RDFFILE</param-name>
+      <!--param-value>${catalina.home}/webapps/naese/data/Drug_Native_American_Medicinal_Plants_DB_combined_subset.rdf</param-value></init-param -->
+      <param-value>${catalina.home}/webapps/naese/data/Drug_Native_American_Medicinal_Plants_MeSH_NCBI_Min_ID_Subset-csv.rdf</param-value></init-param>
+    <init-param><param-name>SPARQL_DIR</param-name>
+      <param-value>${catalina.home}/webapps/naese/sparql</param-value></init-param>
+    <init-param><param-name>UPLOADDIR</param-name>
+      <param-value>/tmp</param-value></init-param>
+    <init-param><param-name>N_MAX</param-name>
+      <param-value>2000</param-value></init-param>
+    <init-param><param-name>N_MAX_LINES</param-name>
+      <param-value>10000</param-value></init-param>
+    <init-param><param-name>MAX_POST_SIZE</param-name>
+      <param-value>10485760</param-value></init-param>
+    <init-param><param-name>SCRATCHDIR</param-name>
+      <param-value>${catalina.home}/webapps/scratch</param-value></init-param>
+    <init-param><param-name>LOGDIR</param-name>
+      <param-value>${catalina.home}/logs</param-value></init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>naese</servlet-name>
+    <url-pattern>/naese</url-pattern>
+  </servlet-mapping>
+
+</web-app>

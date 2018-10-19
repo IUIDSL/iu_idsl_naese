@@ -1,0 +1,153 @@
+<?xml version="1.0" ?>
+<project name="all" basedir="." default="naese">
+  <property environment="env" />
+  <property name="myname" value="Jeremy J Yang" />
+  <property name="org" value="IU Integrative Data Science Lab" />
+  <description>
+	Libraries, applications, and webapps.
+	${myname}, ${org}
+	Note: "ant -Ddebug=true" enables "-Xlint:deprecation".
+  </description>
+  <tstamp>
+    <format property="timestamp" pattern="yyyy-MM-dd HH:mm:ss" />
+    <format property="date" pattern="yyyy-MM-dd" />
+    <format property="year" pattern="yyyy" />
+  </tstamp>
+  <condition property="isMac">   <equals arg1="${os.name}" arg2="Mac OS X"/> </condition>
+  <condition property="isLinux"> <equals arg1="${os.name}" arg2="Linux"/>    </condition>
+  <condition property="jtgt" value="-target 1.7" else="">
+    <equals arg1="${ant.java.version}" arg2="1.8"/>   
+  </condition>
+  <condition property="jsrc" value="-source 1.7" else="">
+    <equals arg1="${ant.java.version}" arg2="1.8"/>   
+  </condition>
+  <condition property="deprecation" value="-Xlint:deprecation" else="-Xlint:-deprecation">
+    <isset property="debug"/>
+  </condition>
+  <target name="configIfLinux" if="isLinux">
+    <!-- echo message="deprecation: ${deprecation}"/ -->
+    <condition property="appdir" value="${user.home}/app" else="/home/app">
+      <equals arg1="${env.HOSTNAME}" arg2="cheminfov.informatics.indiana.edu"/>
+    </condition>
+    <property name="javadir" location="/usr/share/java" />
+    <property name="datadir" location="/home/data" />
+    <presetdef name="jcompile">
+      <javac debug="true" includeantruntime="false" >
+        <compilerarg line="${jsrc}" />
+        <compilerarg line="${jtgt}" />
+        <compilerarg value="${deprecation}" />
+        <compilerarg value="-Xlint:-unchecked" />
+        <compilerarg value="-nowarn" />
+      </javac>
+    </presetdef>
+  </target>
+  <target name="configIfMac" if="isMac">
+    <!-- echo message="deprecation: ${deprecation}"/ -->
+    <property name="includeantruntime" value="false" /> <!-- Kludge for Mac -->
+    <property name="appdir" location="/Users/app" />
+    <property name="javadir" location="/usr/share/java" /> <!-- Fix this -->
+    <property name="datadir" location="/Users/data" />
+    <presetdef name="jcompile">
+      <javac debug="true" includeantruntime="false" >
+        <compilerarg line="${jsrc}" />
+        <compilerarg line="${jtgt}" />
+        <compilerarg value="${deprecation}" />
+        <compilerarg value="-Xlint:-unchecked" />
+        <compilerarg value="-nowarn" />
+      </javac>
+    </presetdef>
+  </target>
+
+  <target name="config" depends="configIfMac,configIfLinux"
+   description="Platform-specific configuration." >
+    <echo message="OS: ${os.name} ${os.version} [${os.arch}]" />
+    <echo message="java version: ${ant.java.version} (${java.home})"/>
+    <echo message="hostname: ${env.HOSTNAME}" />
+    <echo message="home: ${user.home}" />
+    <echo message="appdir: ${appdir}"/>
+    <echo message="${jsrc} ${jtgt}"/>
+    <echo message="To list targets: ant -p"/>
+    <property name="libdir" location="${basedir}/lib" />
+
+    <!-- dependency jars -->
+    <property name="libj2ee" location="${appdir}/lib/servlet.jar" />
+    <property name="libcos" location="${appdir}/lib/cos.jar" />
+    <property name="libdom4j" location="${appdir}/lib/dom4j-1.6.1.jar" />
+    <property name="libaxis" location="${javadir}/axis/axis.jar" />
+
+    <!-- homegrown dependency jars -->
+    <property name="lib_iu_jena" location="${appdir}/lib/iu_ccrg_jena.jar" />
+    <property name="lib_unm_http" location="${appdir}/lib/unm_biocomp_http.jar" />
+    <property name="lib_unm_util" location="${appdir}/lib/unm_biocomp_util.jar" />
+
+    <!-- target jars -->
+    <property name="lib_iu_naese" location="${libdir}/iu_ccrg_naese.jar" />
+
+    <!-- target wars -->
+    <property name="naese_war" location="${libdir}/naese.war" />
+  </target>
+
+
+  <target name="naese" description="JAR: Naese tools" depends="config">
+    <jcompile srcdir="${basedir}/edu/indiana/soic/ccrg/naese" includes="*.java">
+     <classpath>
+       <pathelement location="${basedir}" />
+       <pathelement location="${lib_iu_jena}" />
+       <pathelement location="${lib_unm_http}" />
+       <pathelement location="${lib_unm_util}" />
+       <pathelement location="${libcos}" />
+       <pathelement location="${libmysql}" />
+       <pathelement location="${libj2ee}" />
+       <fileset dir="${appdir}/apache-jena2/lib"><include name="*.jar"/></fileset>
+     </classpath>
+    </jcompile>
+    <jar destfile="${lib_iu_naese}" >
+      <fileset dir="${basedir}" includes="edu/indiana/soic/ccrg/naese/*.*" />
+      <zipfileset dir="${appdir}/apache-jena2/" includes="jena-log4j.properties" prefix="edu/indiana/soic/ccrg/naese" />
+    </jar>
+  </target>
+
+  <target name="naese_war" depends="config,naese" description="WAR: Naese webapp">
+    <war destfile="${naese_war}" webxml="${basedir}/config/web.xml">
+      <lib dir="${appdir}/lib" includes="iu_ccrg_jena.jar" />
+      <lib dir="${appdir}/lib" includes="unm_biocomp_http.jar" />
+      <lib dir="${appdir}/lib" includes="unm_biocomp_util.jar" />
+      <lib dir="${appdir}/lib" includes="cos.jar" />
+      <lib dir="${appdir}/lib" includes="mysql-connector-java-5.1.6.jar" />
+      <lib dir="${appdir}/apache-jena/lib" includes="*.jar" />
+      <classes dir="${basedir}/properties" includes="*.properties" />
+      <fileset dir="${basedir}/html" includes="index.html" />
+      <zipfileset dir="${basedir}/js" includes="*.js" prefix="js" />
+      <zipfileset dir="${basedir}/css" includes="*.css" prefix="css" />
+      <zipfileset dir="${basedir}/images" prefix="images" />
+      <zipfileset dir="${basedir}/data" includes="*.*" prefix="data" />
+      <zipfileset dir="${basedir}/sparql" includes="*.*" prefix="sparql" />
+      <manifest>
+        <attribute name="Author" value="${myname}" />
+        <attribute name="Organization" value="${org}" />
+        <attribute name="Builder" value="${user.name}" />
+        <attribute name="Date" value="${timestamp}" />
+      </manifest>
+    </war>
+    <echo message="Jena WAR, includes local dependencies." />
+    <echo message="File: ${naese_war}" />
+    <echo message="Author: ${myname}" />
+    <echo message="Organization: ${org}" />
+    <echo message="Builder: ${user.name}" />
+    <echo message="Date: ${timestamp}" />
+  </target>
+
+  <!-- Misc/util targets: -->
+
+  <target name="clean" description="Clean all classes, JARs, WARs, and javadocs." >
+    <delete>
+      <fileset dir="${basedir}" includes="**/*.class"/>
+      <fileset dir="${basedir}" includes="**/*.jar"/>
+      <fileset dir="${basedir}" includes="**/*.war"/>
+    </delete>
+    <delete dir="${basedir}/lib" />
+    <delete dir="${basedir}/doc" />
+  </target>
+
+</project>
+

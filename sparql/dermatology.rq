@@ -1,0 +1,28 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX tax: <http://bio2rdf.org/taxonomy:>
+PREFIX voc: <http://bio2rdf.org/taxonomy_vocabulary:>
+PREFIX mesh: <http://bio2rdf.org/mesh:>
+PREFIX usda: <http://plants.usda.gov/core/profile?symbol=>
+PREFIX local: <http://naese.local/>
+
+SELECT ?subject (COUNT(?name) AS ?count)
+WHERE
+{
+  FILTER (regex(?subClassOf,  'Dermatological Aid', 'i')) .
+  ?usage rdfs:subClassOf ?subClassOf .
+  ?id rdf:subject ?subject .
+  ?id rdfs:seeAlso ?seeAlso .
+  ?id owl:sameAs ?sameAs .
+  ?id foaf:member ?usage .
+  ?usage dc:title ?title .
+  ?usage foaf:name ?name .
+  ?usage rdfs:subPropertyOf ?subPropertyOf
+}
+GROUP BY ?subject
+ORDER BY DESC(?count)
+LIMIT 25

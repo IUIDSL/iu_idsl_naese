@@ -1,0 +1,7 @@
+@prefix res: <http://www.w3.org/2005/sparql-results#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+_:_ a res:ResultSet .
+_:_ res:resultVariable "Botanical_Name" .
+_:_ res:solution [
+      res:binding [ res:variable "Botanical_Name" ; res:value "Abies balsamea" ] ] .
+

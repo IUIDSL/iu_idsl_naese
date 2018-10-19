@@ -1,0 +1,19 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX local: <http://naese.local/>
+
+SELECT DISTINCT ?id ?tribe ?subject ?title ?subClassOf
+WHERE {
+    FILTER (regex(?tribe, 'Cherokee', 'i')) .
+    ?member foaf:name ?tribe .
+    ?member dc:title ?title .
+    ?id foaf:member ?member .
+    ?id dc:subject ?subject .
+    ?id owl:sameAs ?sameAs .
+    ?member rdfs:subClassOf ?subClassOf .
+}
+ORDER BY ?subClassOf ?subject
