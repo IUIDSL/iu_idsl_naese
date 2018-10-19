@@ -1,3 +1,4 @@
-# README #
+# Native American Ethnobotany Semantic Explorer
 
-Initial import from repo lobo, dir java/edu/indiana/soic/ccrg.
+ * Web app for IU project by Stefan Furrer and Jeremy Yang.
+ * Currently not active project; archived for possible reuse.
