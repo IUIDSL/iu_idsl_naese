@@ -24,8 +24,8 @@ import com.hp.hpl.jena.sparql.core.*; //Prologue
 import org.apache.jena.atlas.logging.*; //LogCtl
 
 import edu.indiana.sice.idsl.jena.*;
-import edu.unm.health.biocomp.http.*;
-import edu.unm.health.biocomp.util.*;
+import edu.indiana.sice.idsl.util.*;
+import edu.indiana.sice.idsl.util.http.*;
 
 /**	Native American ethnobotony semantic explorer (Naese).
 
