@@ -1,4 +1,4 @@
-package edu.indiana.soic.ccrg.naese;
+package edu.indiana.sice.idsl.naese;
 
 import java.io.*;
 import java.net.*; //URLEncoder,InetAddress
@@ -23,7 +23,7 @@ import com.hp.hpl.jena.sparql.core.*; //Prologue
 
 import org.apache.jena.atlas.logging.*; //LogCtl
 
-import edu.indiana.soic.ccrg.jena.*;
+import edu.indiana.sice.idsl.jena.*;
 import edu.unm.health.biocomp.http.*;
 import edu.unm.health.biocomp.util.*;
 
@@ -54,7 +54,6 @@ public class naese_servlet extends HttpServlet
   private static String color1="#EEEEEE";
 
   private static Model RDFMOD=null; //initialized once per deployment
-
 
   // EXAMPLE Sparql headers and queries:
   // Improve by reading these from rq files, from configured SPARQL_DIR.
