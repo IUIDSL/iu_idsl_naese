@@ -1,9 +1,20 @@
-# `IU_IDSL_NAESE`: Native American Ethnobotany Semantic Explorer
+# `NAESE`: Native American Ethnobotany Semantic Explorer
 
-<img height="80" src="src/main/resources/images/banner.jpg">
+<img height="80" src="naese_war/src/main/webapp/images/banner.jpg">
 
- * Web app for IU project by Stefan Furrer and Jeremy Yang.
+ * Data Semantics project by Stefan Furrer and Jeremy Yang.
  * Built with RDF, Sparql, Jena.
- * Maven-ized in 2019.
 
- <img height="400" src="src/main/resources/images/NAESE_architecture.jpg">
+## Dependencies
+
+* Java 1.8
+* Maven 3.5+
+* Jena and other open source libraries.
+ 
+## Compiling
+
+```
+mvn clean install
+```
+
+ <img height="400" src="naese_war/src/main/webapp/images/NAESE_architecture.jpg">
