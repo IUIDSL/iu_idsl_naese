@@ -104,7 +104,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME,jsincludes,cssincludes,JavaScript(),color1,request));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, "tomcat"));
       out.println(HtmUtils.FooterHtm(errors,true));
       return;
     }
@@ -112,7 +112,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME,jsincludes,cssincludes,JavaScript(),color1,request));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, "tomcat"));
       out.println(HelpHtm());
       out.println(HtmUtils.FooterHtm(errors,true));
     }
@@ -120,7 +120,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME,jsincludes,cssincludes,JavaScript(),color1,request));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, "tomcat"));
       out.println(FormHtm(mrequest,response,params));
       String rqtxt=RQTXT;
       if (params.isChecked("hideheaders")) rqtxt=RQ_HEADERS+"\n"+RQTXT;
@@ -143,7 +143,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME,jsincludes,cssincludes,JavaScript(),color1,request));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, "tomcat"));
       out.println(FormHtm(mrequest,response,params));
       out.println("<SCRIPT>go_init(window.document.mainform)</SCRIPT>");
       out.println(HtmUtils.FooterHtm(errors,true));
