@@ -17,4 +17,25 @@
 mvn clean install
 ```
 
+## Testing with Jetty
+
+<http://localhost:8081/naese/naese>
+
+```
+mvn --projects naese_war jetty:run
+```
+
+## Deploying `CARLSBAD`
+
+```
+mvn --projects naese_war tomcat7:deploy
+```
+
+or
+
+```
+mvn --projects naese_war tomcat7:redeploy
+```
+
+
  <img height="400" src="naese_war/src/main/webapp/images/NAESE_architecture.jpg">
