@@ -36,7 +36,7 @@
           </httpConnector>
           <webApp>
             <descriptor>${project.basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
-            <contextPath>/carlsbad</contextPath>
+            <contextPath>/naese</contextPath>
           </webApp>      
         </configuration>
       </plugin>

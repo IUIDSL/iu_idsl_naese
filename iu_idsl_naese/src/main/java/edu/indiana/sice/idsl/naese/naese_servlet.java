@@ -38,7 +38,6 @@ public class naese_servlet extends HttpServlet
   private static String LOGDIR=null;	// configured in web.xml
   private static String APPNAME=null;	// configured in web.xml
   private static String UPLOADDIR=null;	// configured in web.xml
-  //private static String DBDIR=null;	// configured in web.xml
   private static String DBNAME=null;	// configured in web.xml
   private static String RDFFILE=null;	// configured in web.xml
   private static int N_MAX=100; // configured in web.xml
@@ -165,12 +164,12 @@ public class naese_servlet extends HttpServlet
     this.RQTXT="";
 
     String logo_htm="<TABLE CELLSPACING=5 CELLPADDING=5><TR><TD>";
-    String imghtm=("<IMG BORDER=0 HEIGHT=\"60\" SRC=\"/tomcat"+CONTEXTPATH+"/images/iu_logo.png\">");
+    String imghtm=("<IMG BORDER=0 HEIGHT=\"60\" SRC=\"/"+PROXY_PREFIX+CONTEXTPATH+"/images/iu_logo.png\">");
     String tiphtm=(APPNAME+" web app from IU SOIC.");
     String href=("http://soic.indiana.edu");
     logo_htm+=(HtmUtils.HtmTipper(imghtm,tiphtm,href,200,"white"));
     logo_htm+="</TD><TD>";
-    imghtm=("<IMG BORDER=0 SRC=\"/tomcat"+CONTEXTPATH+"/images/jena-logo-jumbotron.png\">");
+    imghtm=("<IMG BORDER=0 SRC=\"/"+PROXY_PREFIX+CONTEXTPATH+"/images/jena-logo-jumbotron.png\">");
     tiphtm=("Apache Jena");
     href=("https://jena.apache.org/");
     logo_htm+=(HtmUtils.HtmTipper(imghtm,tiphtm,href,200,"white"));
@@ -440,7 +439,7 @@ public class naese_servlet extends HttpServlet
       throw new ServletException("Please supply UPLOADDIR parameter.");
     DBNAME=conf.getInitParameter("DBNAME");
     if (DBNAME==null) DBNAME="NAESE";
-    RDFFILE=conf.getInitParameter("RDFFILE");
+    RDFFILE=CONTEXT.getRealPath("")+"/data/"+conf.getInitParameter("RDFFILE");
     if (RDFFILE==null)
       throw new ServletException("Please supply RDFFILE parameter.");
 
@@ -452,10 +451,9 @@ public class naese_servlet extends HttpServlet
     String dlang = (fext.equalsIgnoreCase("ttl")?"TTL":(fext.equalsIgnoreCase("n3")?"N3":"RDF/XML"));
     try { RDFMOD.read(instr,"",dlang); } //arg2=base_uri, arg3=lang
     catch (Exception e) { CONTEXT.log("ERROR: "+e.getMessage()); }
-
-    SPARQL_DIR=conf.getInitParameter("SPARQL_DIR");
-    if (SPARQL_DIR==null) SPARQL_DIR="/usr/local/tomcat/webapps/jena/sparql";
-
+    SPARQL_DIR=CONTEXT.getRealPath("")+"/"+conf.getInitParameter("SPARQL_DIR");
+    if (SPARQL_DIR==null) 
+      throw new ServletException("Please supply SPARQL_DIR parameter.");
     LOGDIR=conf.getInitParameter("LOGDIR")+CONTEXTPATH;
     if (LOGDIR==null) LOGDIR="/usr/local/tomcat/logs"+CONTEXTPATH;
     try { N_MAX=Integer.parseInt(conf.getInitParameter("N_MAX")); }

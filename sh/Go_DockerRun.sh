@@ -13,6 +13,8 @@ APPPORT=8080
 # -dit = --detached --interactive --tty
 sudo docker run -dit --name ${CNAME} -p ${DOCKERPORT}:${APPPORT} ${INAME}
 #
+sudo docker container logs ${CNAME}
+#
 set -x
 sudo docker container ls -a
 set +x

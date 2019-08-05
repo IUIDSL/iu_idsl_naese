@@ -12,15 +12,12 @@
     <servlet-class>edu.indiana.sice.idsl.naese.naese_servlet</servlet-class>
     <init-param><param-name>APPNAME</param-name>
       <param-value>Naese</param-value></init-param>
-    <init-param><param-name>DBDIR</param-name>
-      <param-value>${catalina.home}/webapps/naese/WEB-INF/data</param-value></init-param>
     <init-param><param-name>DBNAME</param-name>
       <param-value>naese</param-value></init-param>
     <init-param><param-name>RDFFILE</param-name>
-      <!--param-value>${catalina.home}/webapps/naese/data/Drug_Native_American_Medicinal_Plants_DB_combined_subset.rdf</param-value></init-param -->
-      <param-value>${catalina.home}/webapps/naese/WEB-INF/data/Drug_Native_American_Medicinal_Plants_MeSH_NCBI_Min_ID_Subset-csv.rdf</param-value></init-param>
+      <param-value>Drug_Native_American_Medicinal_Plants_MeSH_NCBI_Min_ID_Subset-csv.rdf</param-value></init-param>
     <init-param><param-name>SPARQL_DIR</param-name>
-      <param-value>${catalina.home}/webapps/naese/WEB-INF/sparql</param-value></init-param>
+      <param-value>sparql</param-value></init-param>
     <init-param><param-name>UPLOADDIR</param-name>
       <param-value>/tmp</param-value></init-param>
     <init-param><param-name>N_MAX</param-name>
