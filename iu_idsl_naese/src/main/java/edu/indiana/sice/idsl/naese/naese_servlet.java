@@ -154,8 +154,8 @@ public class naese_servlet extends HttpServlet
   /////////////////////////////////////////////////////////////////////////////
   /**	Called once per request.
   */
-  private boolean initialize(HttpServletRequest request,MultipartRequest mrequest)
-      throws IOException,ServletException
+  private boolean initialize(HttpServletRequest request, MultipartRequest mrequest)
+      throws IOException, ServletException
   {
     SERVLETNAME=this.getServletName();
     this.outputs = new ArrayList<String>();
@@ -164,15 +164,15 @@ public class naese_servlet extends HttpServlet
     this.RQTXT="";
 
     String logo_htm="<TABLE CELLSPACING=5 CELLPADDING=5><TR><TD>";
-    String imghtm=("<IMG BORDER=0 HEIGHT=\"60\" SRC=\"/"+PROXY_PREFIX+CONTEXTPATH+"/images/iu_logo.png\">");
+    String imghtm=("<IMG BORDER=0 HEIGHT=\"60\" SRC=\"images/iu_logo.png\">");
     String tiphtm=(APPNAME+" web app from IU SOIC.");
     String href=("http://soic.indiana.edu");
-    logo_htm+=(HtmUtils.HtmTipper(imghtm,tiphtm,href,200,"white"));
+    logo_htm+=(HtmUtils.HtmTipper(imghtm, tiphtm, href, 200, "white"));
     logo_htm+="</TD><TD>";
-    imghtm=("<IMG BORDER=0 SRC=\"/"+PROXY_PREFIX+CONTEXTPATH+"/images/jena-logo-jumbotron.png\">");
+    imghtm=("<IMG BORDER=0 SRC=\"images/jena-logo-jumbotron.png\">");
     tiphtm=("Apache Jena");
     href=("https://jena.apache.org/");
-    logo_htm+=(HtmUtils.HtmTipper(imghtm,tiphtm,href,200,"white"));
+    logo_htm+=(HtmUtils.HtmTipper(imghtm, tiphtm, href, 200, "white"));
     logo_htm+="</TD></TR></TABLE>";
     errors.add("<CENTER>"+logo_htm+"</CENTER>");
 
@@ -302,11 +302,10 @@ public class naese_servlet extends HttpServlet
     {
       RQTXT=params.getVal("rqtxt");
     }
-
     return true;
   }
   /////////////////////////////////////////////////////////////////////////////
-  private static String FormHtm(MultipartRequest mrequest,HttpServletResponse response,
+  private static String FormHtm(MultipartRequest mrequest, HttpServletResponse response,
 	HttpParams params)
       throws IOException
   {
@@ -454,8 +453,8 @@ public class naese_servlet extends HttpServlet
     SPARQL_DIR=CONTEXT.getRealPath("")+"/"+conf.getInitParameter("SPARQL_DIR");
     if (SPARQL_DIR==null) 
       throw new ServletException("Please supply SPARQL_DIR parameter.");
-    LOGDIR=conf.getInitParameter("LOGDIR")+CONTEXTPATH;
-    if (LOGDIR==null) LOGDIR="/usr/local/tomcat/logs"+CONTEXTPATH;
+    LOGDIR=conf.getInitParameter("LOGDIR");
+    if (LOGDIR==null) LOGDIR="/tmp"+CONTEXTPATH+"_logs";
     try { N_MAX=Integer.parseInt(conf.getInitParameter("N_MAX")); }
     catch (Exception e) { N_MAX=100; }
 
