@@ -51,7 +51,6 @@ public class naese_servlet extends HttpServlet
   private static String DATESTR=null;
   private static File logfile=null;
   private static String color1="#EEEEEE";
-  private static String PROXY_PREFIX=null;
   private static Model RDFMOD=null; //initialized once per deployment
 
   // EXAMPLE Sparql headers and queries:
@@ -97,16 +96,14 @@ public class naese_servlet extends HttpServlet
     // main logic:
     boolean ok=initialize(request,mrequest);
 
-    ArrayList<String> cssincludes = new ArrayList<String>(Arrays.asList("biocomp.css"));
-    ArrayList<String> jsincludes = new ArrayList<String>(Arrays.asList("biocomp.js","ddtip.js"));
-
-    PROXY_PREFIX = (Pattern.compile(".*Jetty.*$", Pattern.CASE_INSENSITIVE).matcher(CONTEXT.getServerInfo()).matches())?"jetty":"tomcat";
+    ArrayList<String> cssincludes = new ArrayList<String>(Arrays.asList("/css/biocomp.css"));
+    ArrayList<String> jsincludes = new ArrayList<String>(Arrays.asList("/js/biocomp.js","/js/ddtip.js"));
 
     if (!ok)
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, PROXY_PREFIX));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, null));
       out.println(HtmUtils.FooterHtm(errors,true));
       return;
     }
@@ -114,7 +111,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, PROXY_PREFIX));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, null));
       out.println(HelpHtm());
       out.println(HtmUtils.FooterHtm(errors,true));
     }
@@ -122,7 +119,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, PROXY_PREFIX));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, null));
       out.println(FormHtm(mrequest,response,params));
       String rqtxt=RQTXT;
       if (params.isChecked("hideheaders")) rqtxt=RQ_HEADERS+"\n"+RQTXT;
@@ -145,7 +142,7 @@ public class naese_servlet extends HttpServlet
     {
       response.setContentType("text/html");
       out=response.getWriter();
-      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, PROXY_PREFIX));
+      out.println(HtmUtils.HeaderHtm(APPNAME, jsincludes, cssincludes, JavaScript(), "", color1, request, null));
       out.println(FormHtm(mrequest,response,params));
       out.println("<SCRIPT>go_init(window.document.mainform)</SCRIPT>");
       out.println(HtmUtils.FooterHtm(errors,true));

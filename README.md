@@ -25,7 +25,7 @@ mvn clean install
 mvn --projects naese_war jetty:run
 ```
 
-## Deploying `CARLSBAD`
+## Deploying `NAESE`
 
 ```
 mvn --projects naese_war tomcat7:deploy
