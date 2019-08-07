@@ -96,8 +96,8 @@ public class naese_servlet extends HttpServlet
     // main logic:
     boolean ok=initialize(request,mrequest);
 
-    ArrayList<String> cssincludes = new ArrayList<String>(Arrays.asList("/css/biocomp.css"));
-    ArrayList<String> jsincludes = new ArrayList<String>(Arrays.asList("/js/biocomp.js","/js/ddtip.js"));
+    ArrayList<String> cssincludes = new ArrayList<String>(Arrays.asList(CONTEXTPATH+"/css/biocomp.css"));
+    ArrayList<String> jsincludes = new ArrayList<String>(Arrays.asList(CONTEXTPATH+"/js/biocomp.js",CONTEXTPATH+"/js/ddtip.js"));
 
     if (!ok)
     {
