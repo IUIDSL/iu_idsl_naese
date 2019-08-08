@@ -37,5 +37,11 @@ or
 mvn --projects naese_war tomcat7:redeploy
 ```
 
+## Docker
 
- <img height="400" src="naese_war/src/main/webapp/images/NAESE_architecture.jpg">
+See scripts for building and deploying.
+See <https://hub.docker.com/r/jeremyjyang/naese>.
+
+## Architecture
+
+<img height="400" src="naese_war/src/main/webapp/images/NAESE_architecture.jpg">
