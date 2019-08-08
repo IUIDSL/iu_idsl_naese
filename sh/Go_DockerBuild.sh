@@ -1,16 +1,14 @@
 #!/bin/sh
 ###
-set -e
 #
 sudo docker version
 #
 INAME="naese"
-CNAME="${INAME}_container"
+TAG="v0.0.1-SNAPSHOT"
 #
 ###
 # Build image from Dockerfile.
-sudo docker build -t ${INAME} .
+sudo docker build -t ${INAME}:${TAG} .
 #
-set -x
 sudo docker images
 #
