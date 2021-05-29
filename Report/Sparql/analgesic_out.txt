@@ -1,0 +1,49 @@
+  1 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  2 PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  3 PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  4 PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  5 PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  6 PREFIX  local: <http://naese.local/>
+  7 
+  8 SELECT  ?subj ?pred ?subClassOf
+  9 WHERE
+ 10   { ?subj ?pred ?subClassOf
+ 11     FILTER regex(xsd:string(?subClassOf), "analgesic", "i")
+ 12   }
+
+06:24:45 INFO  exec                 :: QUERY
+  PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX  local: <http://naese.local/>
+  
+  SELECT  ?subj ?pred ?subClassOf
+  WHERE
+    { ?subj ?pred ?subClassOf
+      FILTER regex(xsd:string(?subClassOf), "analgesic", "i")
+    }
+06:24:45 INFO  exec                 :: ALGEBRA
+  (project (?subj ?pred ?subClassOf)
+    (filter (regex (<http://www.w3.org/2001/XMLSchema#string> ?subClassOf) "analgesic" "i")
+      (quadpattern (quad <urn:x-arq:DefaultGraphNode> ?subj ?pred ?subClassOf))))
+06:24:45 INFO  exec                 :: TDB
+  (project (?subj ?pred ?subClassOf)
+    (filter (regex (<http://www.w3.org/2001/XMLSchema#string> ?subClassOf) "analgesic" "i")
+      (quadpattern (quad <urn:x-arq:DefaultGraphNode> ?subj ?pred ?subClassOf))))
+06:24:45 INFO  exec                 :: Execute :: (?subj ?pred ?subClassOf)
+------------------------------------------------
+| subj         | pred            | subClassOf  |
+================================================
+| local:100012 | rdfs:subClassOf | "Analgesic" |
+| local:100017 | rdfs:subClassOf | "Analgesic" |
+| local:100022 | rdfs:subClassOf | "Analgesic" |
+| local:100116 | rdfs:subClassOf | "Analgesic" |
+| local:100138 | rdfs:subClassOf | "Analgesic" |
+| local:100180 | rdfs:subClassOf | "Analgesic" |
+| local:100236 | rdfs:subClassOf | "Analgesic" |
+| local:100249 | rdfs:subClassOf | "Analgesic" |
+| local:100250 | rdfs:subClassOf | "Analgesic" |
+| local:100279 | rdfs:subClassOf | "Analgesic" |
+------------------------------------------------

@@ -1,0 +1,97 @@
+  1 PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  2 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  3 PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  4 PREFIX  tax:  <http://bio2rdf.org/taxonomy:>
+  5 PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  6 PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  7 PREFIX  usda: <http://plants.usda.gov/core/profile?symbol=>
+  8 PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  9 PREFIX  local: <http://naese.local/>
+ 10 PREFIX  mesh: <http://bio2rdf.org/mesh:>
+ 11 
+ 12 SELECT  ?common_name ?tribe ?title ?medical_class ?plants_uri ?mesh_id ?ncbi_tax
+ 13 WHERE
+ 14   { ?id dc:subject "Hibiscus tiliaceus L." .
+ 15     ?id rdf:subject ?common_name .
+ 16     ?id rdfs:seeAlso ?plants_uri .
+ 17     ?id owl:sameAs ?ncbi_tax .
+ 18     ?id foaf:member ?usage .
+ 19     ?usage dc:title ?title .
+ 20     ?usage foaf:name ?tribe .
+ 21     ?usage rdfs:subClassOf ?medical_class .
+ 22     ?usage rdfs:subPropertyOf ?mesh_id
+ 23   }
+
+07:30:47 INFO  exec                 :: QUERY
+  PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX  tax:  <http://bio2rdf.org/taxonomy:>
+  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  PREFIX  usda: <http://plants.usda.gov/core/profile?symbol=>
+  PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX  local: <http://naese.local/>
+  PREFIX  mesh: <http://bio2rdf.org/mesh:>
+  
+  SELECT  ?common_name ?tribe ?title ?medical_class ?plants_uri ?mesh_id ?ncbi_tax
+  WHERE
+    { ?id dc:subject "Hibiscus tiliaceus L." .
+      ?id rdf:subject ?common_name .
+      ?id rdfs:seeAlso ?plants_uri .
+      ?id owl:sameAs ?ncbi_tax .
+      ?id foaf:member ?usage .
+      ?usage dc:title ?title .
+      ?usage foaf:name ?tribe .
+      ?usage rdfs:subClassOf ?medical_class .
+      ?usage rdfs:subPropertyOf ?mesh_id
+    }
+07:30:47 INFO  exec                 :: ALGEBRA
+  (project (?common_name ?tribe ?title ?medical_class ?plants_uri ?mesh_id ?ncbi_tax)
+    (quadpattern
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://purl.org/dc/elements/1.1/subject> "Hibiscus tiliaceus L.")
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> ?common_name)
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?plants_uri)
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2002/07/owl#sameAs> ?ncbi_tax)
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?usage)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://purl.org/dc/elements/1.1/title> ?title)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://xmlns.com/foaf/0.1/name> ?tribe)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?medical_class)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> ?mesh_id)
+    ))
+07:30:47 INFO  exec                 :: TDB
+  (project (?common_name ?tribe ?title ?medical_class ?plants_uri ?mesh_id ?ncbi_tax)
+    (quadpattern
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://purl.org/dc/elements/1.1/subject> "Hibiscus tiliaceus L.")
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> ?common_name)
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?plants_uri)
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2002/07/owl#sameAs> ?ncbi_tax)
+      (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?usage)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://purl.org/dc/elements/1.1/title> ?title)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://xmlns.com/foaf/0.1/name> ?tribe)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?medical_class)
+      (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> ?mesh_id)
+    ))
+07:30:47 INFO  exec                 :: Execute
+(?id <http://purl.org/dc/elements/1.1/subject> "Hibiscus tiliaceus L.")
+(?id rdf:subject ?common_name)
+(?id rdfs:seeAlso ?plants_uri)
+(?id <http://www.w3.org/2002/07/owl#sameAs> ?ncbi_tax)
+(?id <http://xmlns.com/foaf/0.1/member> ?usage)
+(?usage <http://purl.org/dc/elements/1.1/title> ?title)
+(?usage <http://xmlns.com/foaf/0.1/name> ?tribe)
+(?usage rdfs:subClassOf ?medical_class)
+(?usage rdfs:subPropertyOf ?mesh_id)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| common_name    | tribe      | title                                                                                                 | medical_class   | plants_uri | mesh_id      | ncbi_tax   |
+==================================================================================================================================================================================================
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D014867 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D008168 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D013514 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D010944 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D015984 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:Q000098 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D011652 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D011654 | tax:183267 |
+| "Sea Hibiscus" | "Hawaiian" | "Bark and other plants crushed, water added, strained and resulting liquid taken for congested chest" | "Pulmonary Aid" | usda:HITI  | mesh:D013180 | tax:183267 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

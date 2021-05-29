@@ -1,0 +1,13 @@
+# jena_utils.sh -endpoint_url http://taxonomy.bio2rdf.org/sparql -query_endpoint -rqfile fed_02.rq
+#
+# http://taxonomy.bio2rdf.org/sparql
+
+PREFIX tax: <http://bio2rdf.org/taxonomy:>
+PREFIX voc: <http://bio2rdf.org/taxonomy_vocabulary:>
+SELECT
+  (STR(?name) AS ?Botanical_Name) 
+WHERE
+{  
+  tax:90345 voc:scientific-name ?name .
+}
+

@@ -1,0 +1,125 @@
+\begin{thebibliography}{10}
+
+\bibitem{Allemang:swftwo}
+D.~Allemang and J.~Hendler.
+\newblock {\em Semantic Web for the working ontologist, 2nd Edition}.
+\newblock Morgan and Kaufmann, 2011.
+
+\bibitem{Belleau:2008}
+F.~Belleau, M.-A. Nolin, N.~Tourigny, P.~Rigault, and J.~Morissette.
+\newblock Bio2rdf: towards a mashup to build bioinformatics knowledge systems.
+\newblock {\em J Biomed Inform}, 41(5):706--716, Oct 2008.
+
+\bibitem{Benson:NCBITax2}
+D.~A. Benson, I.~Karsch-Mizrachi, D.~J. Lipman, J.~Ostell, and E.~W. Sayers.
+\newblock Genbank.
+\newblock {\em Nucleic Acids Res}, 37(Database issue):D26--31, Jan 2009.
+
+\bibitem{bizer:2009}
+C.~Bizer, T.~Heath, and T.~Berners-Lee.
+\newblock Linked data-the story so far.
+\newblock {\em International journal on semantic web and information systems},
+  5(3):1--22, 2009.
+
+\bibitem{Bodenreider:UMLS}
+O.~Bodenreider.
+\newblock The unified medical language system (umls): integrating biomedical
+  terminology.
+\newblock {\em Nucleic acids research}, 32::D267, 2004.
+
+\bibitem{Pubmed:23324024}
+B.~Boyle, N.~Hopkins, Z.~Lu, J.~A. Raygoza~Garay, D.~Mozzherin, T.~Rees,
+  N.~Matasci, M.~Narro, W.~Piel, S.~Mckay, S.~Lowry, C.~Freeland, R.~Peet, and
+  B.~Enquist.
+\newblock The taxonomic name resolution service: an online tool for automated
+  standardization of plant names.
+\newblock {\em BMC Bioinformatics}, 14(1):16, 2013.
+
+\bibitem{Cheung:TCM}
+K.~Cheung and H.~Chen.
+\newblock Semantic web for data harmonization in chinese medicine.
+\newblock {\em Chinese Medicine}, 2010.
+
+\bibitem{Heinrich:2006}
+M.~Heinrich, J.~Kufer, M.~Leonti, and M.~Pardo-de Santayana.
+\newblock Ethnobotany and ethnopharmacology--interdisciplinary links with the
+  historical sciences.
+\newblock {\em J Ethnopharmacol}, 107(2):157--160, Sep 2006.
+
+\bibitem{Hyvonen:cult}
+E.~Hyvonen.
+\newblock {\em Publishing and Using Cultural Heritage Linked Data on the
+  Semantic Web. Synthesis Lectures on the Semantic Web: Theory and Technology},
+  volume 1:3.
+\newblock Morgan and Claypool, 2012.
+
+\bibitem{KamsuFoguem:2013}
+B.~Kamsu-Foguem, G.~Diallo, and C.~Foguem.
+\newblock Conceptual graph-based knowledge representation for supporting
+  reasoning in african traditional medicine.
+\newblock {\em Engineering Applications of Artificial Intelligence}, 26(4):1348
+  -- 1365, 2013.
+
+\bibitem{Khan:2012}
+M.~A.~A. Khan and M.~T. Islam.
+\newblock Analgesic and cytotoxic activity of acorus calamus l., kigelia
+  pinnata l., mangifera indica l. and tabernaemontana divaricata l.
+\newblock {\em J Pharm Bioallied Sci}, 4(2):149--154, Apr 2012.
+
+\bibitem{moerman:analysis}
+D.~E. Moerman.
+\newblock An analysis of the food plants and drug plants of native north
+  america.
+\newblock {\em Journal of ethnopharmacology}, 52(1):1--22, 1996.
+
+\bibitem{moerman:native}
+D.~E. Moerman.
+\newblock {\em Native american ethnobotany}, volume 879.
+\newblock Timber Press Portland, 1998.
+
+\bibitem{Mork:MTI}
+J.~G. Mork, A.~J. Jimeno-Yepes, and A.~R. Aronson.
+\newblock The nlm medical text indexer system for indexing biomedical
+  literature, 2013.
+
+\bibitem{Mustaffa:2012}
+S.~Mustaffa, R.~Ishak, and D.~Lukose.
+\newblock Ontology model for herbal medicine knowledge repository.
+\newblock In D.~Lukose, A.~Ahmad, and A.~Suliman, editors, {\em Knowledge
+  Technology}, volume 295 of {\em Communications in Computer and Information
+  Science}, pages 293--302. Springer Berlin Heidelberg, 2012.
+
+\bibitem{Ningthoujam:2012}
+S.~S. Ningthoujam, A.~D. Talukdar, K.~S. Potsangbam, and M.~D. Choudhury.
+\newblock Challenges in developing medicinal plant databases for sharing
+  ethnopharmacological knowledge.
+\newblock {\em J Ethnopharmacol}, 141(1):9--32, May 2012.
+
+\bibitem{Sayers:NCBITax1}
+E.~W. Sayers, T.~Barrett, D.~A. Benson, S.~H. Bryant, K.~Canese, V.~Chetvernin,
+  D.~M. Church, M.~DiCuccio, R.~Edgar, S.~Federhen, M.~Feolo, L.~Y. Geer,
+  W.~Helmberg, Y.~Kapustin, D.~Landsman, D.~J. Lipman, T.~L. Madden, D.~R.
+  Maglott, V.~Miller, I.~Mizrachi, J.~Ostell, K.~D. Pruitt, G.~D. Schuler,
+  E.~Sequeira, S.~T. Sherry, M.~Shumway, K.~Sirotkin, A.~Souvorov,
+  G.~Starchenko, T.~A. Tatusova, L.~Wagner, E.~Yaschenko, and J.~Ye.
+\newblock Database resources of the national center for biotechnology
+  information.
+\newblock {\em Nucleic Acids Res}, 37(Database issue):D5--15, Jan 2009.
+
+\bibitem{Stevenson:Disambiguation}
+M.~Stevenson and Y.~Guo.
+\newblock Disambiguation in the biomedical domain: The role of ambiguity type.
+\newblock {\em Journal of Biomedical Informatics}, 43(6):972--981, 2014.
+
+\bibitem{zhao:2010}
+J.~Zhao.
+\newblock Publishing chinese medicine knowledge as linked data on the web.
+\newblock {\em Chinese Medicine}, 5(1):1--12, 2010.
+
+\bibitem{Zhou:2004}
+X.~Zhou, Z.~Wu, A.~Yin, L.~Wu, W.~Fan, and R.~Zhang.
+\newblock Ontology development for unified traditional chinese medical language
+  system.
+\newblock {\em Artif Intell Med}, 32(1):15--27, Sep 2004.
+
+\end{thebibliography}

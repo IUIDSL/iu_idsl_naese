@@ -1,0 +1,127 @@
+  1 PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  2 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  3 PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  4 PREFIX  tax:  <http://bio2rdf.org/taxonomy:>
+  5 PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  6 PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  7 PREFIX  usda: <http://plants.usda.gov/core/profile?symbol=>
+  8 PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  9 PREFIX  voc:  <http://bio2rdf.org/taxonomy_vocabulary:>
+ 10 PREFIX  local: <http://naese.local/>
+ 11 PREFIX  mesh: <http://bio2rdf.org/mesh:>
+ 12 
+ 13 SELECT  ?subject (count(?name) AS ?count)
+ 14 WHERE
+ 15   { FILTER regex(?subClassOf, "Dermatological Aid", "i")
+ 16     ?usage rdfs:subClassOf ?subClassOf .
+ 17     ?id rdf:subject ?subject .
+ 18     ?id rdfs:seeAlso ?seeAlso .
+ 19     ?id owl:sameAs ?sameAs .
+ 20     ?id foaf:member ?usage .
+ 21     ?usage dc:title ?title .
+ 22     ?usage foaf:name ?name .
+ 23     ?usage rdfs:subPropertyOf ?subPropertyOf
+ 24   }
+ 25 GROUP BY ?subject
+ 26 ORDER BY DESC(?count)
+ 27 LIMIT   25
+
+06:25:03 INFO  exec                 :: QUERY
+  PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX  tax:  <http://bio2rdf.org/taxonomy:>
+  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  PREFIX  usda: <http://plants.usda.gov/core/profile?symbol=>
+  PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX  voc:  <http://bio2rdf.org/taxonomy_vocabulary:>
+  PREFIX  local: <http://naese.local/>
+  PREFIX  mesh: <http://bio2rdf.org/mesh:>
+  
+  SELECT  ?subject (count(?name) AS ?count)
+  WHERE
+    { FILTER regex(?subClassOf, "Dermatological Aid", "i")
+      ?usage rdfs:subClassOf ?subClassOf .
+      ?id rdf:subject ?subject .
+      ?id rdfs:seeAlso ?seeAlso .
+      ?id owl:sameAs ?sameAs .
+      ?id foaf:member ?usage .
+      ?usage dc:title ?title .
+      ?usage foaf:name ?name .
+      ?usage rdfs:subPropertyOf ?subPropertyOf
+    }
+  GROUP BY ?subject
+  ORDER BY DESC(?count)
+  LIMIT   25
+06:25:03 INFO  exec                 :: ALGEBRA
+  (project (?subject ?count)
+    (top (25 (desc ?count))
+      (extend ((?count ?.0))
+        (group (?subject) ((?.0 (count ?name)))
+          (filter (regex ?subClassOf "Dermatological Aid" "i")
+            (quadpattern
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?subClassOf)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> ?subject)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?seeAlso)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2002/07/owl#sameAs> ?sameAs)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?usage)
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://purl.org/dc/elements/1.1/title> ?title)
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://xmlns.com/foaf/0.1/name> ?name)
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> ?subPropertyOf)
+            ))))))
+06:25:03 INFO  exec                 :: TDB
+  (project (?subject ?count)
+    (top (25 (desc ?count))
+      (extend ((?count ?.0))
+        (group (?subject) ((?.0 (count ?name)))
+          (filter (regex ?subClassOf "Dermatological Aid" "i")
+            (quadpattern
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?subClassOf)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> ?subject)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?seeAlso)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2002/07/owl#sameAs> ?sameAs)
+              (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?usage)
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://purl.org/dc/elements/1.1/title> ?title)
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://xmlns.com/foaf/0.1/name> ?name)
+              (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> ?subPropertyOf)
+            ))))))
+06:25:03 INFO  exec                 :: Execute
+(?id rdfs:seeAlso ?seeAlso)
+(?id rdf:subject ?subject)
+(?id <http://www.w3.org/2002/07/owl#sameAs> ?sameAs)
+(?id <http://xmlns.com/foaf/0.1/member> ?usage)
+(?usage rdfs:subClassOf ?subClassOf)
+06:25:03 INFO  exec                 :: Execute
+(?usage <http://purl.org/dc/elements/1.1/title> ?title)
+(?usage <http://xmlns.com/foaf/0.1/name> ?name)
+(?usage rdfs:subPropertyOf ?subPropertyOf)
+-------------------------------------
+| subject                   | count |
+=====================================
+| "Balsam Fir"              | 8     |
+| "Bitter Cherry"           | 8     |
+| "Indian Walnut"           | 7     |
+| "Mockernut Hickory"       | 6     |
+| "Sand Hickory"            | 6     |
+| "Shellbark Hickory"       | 6     |
+| "Alaweo"                  | 5     |
+| "Common Persimmon"        | 5     |
+| "Malaysian Apple"         | 5     |
+| "Roundleaf Buffaloberry"  | 5     |
+| "Philadelphia Fleabane"   | 4     |
+| "Robin's Plantain"        | 4     |
+| "Spotted Geranium"        | 4     |
+| "American Spikenard"      | 3     |
+| "American Strawberrybush" | 3     |
+| "Black Oak"               | 3     |
+| "Devilsclub"              | 3     |
+| "Eastern Hemlock"         | 3     |
+| "Grand Fir"               | 3     |
+| "Northern Red Oak"        | 3     |
+| "Oneseed Juniper"         | 3     |
+| "Post Oak"                | 3     |
+| "Redroot Amaranth"        | 3     |
+| "Sagebrush"               | 3     |
+| "Shingle Oak"             | 3     |
+-------------------------------------

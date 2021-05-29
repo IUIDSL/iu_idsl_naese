@@ -1,0 +1,13 @@
+# http://mesh.bio2rdf.org/sparql 
+
+PREFIX mesh: <http://bio2rdf.org/mesh:>
+PREFIX voc: <http://bio2rdf.org/mesh_vocabulary:>
+
+SELECT
+  (STR(?name) AS ?MeSH_Term)
+  (STR(?scopeNote) AS ?MeSH_Description)
+WHERE
+{  
+  mesh:D018517 voc:mesh-heading ?name . 
+  mesh:D018517 voc:mesh-scope-note ?scopeNote
+}

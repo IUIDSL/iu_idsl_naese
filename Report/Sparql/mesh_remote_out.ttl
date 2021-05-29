@@ -1,0 +1,8 @@
+@prefix res: <http://www.w3.org/2005/sparql-results#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+_:_ a res:ResultSet .
+_:_ res:resultVariable "MeSH_Term" , "MeSH_Description" .
+_:_ res:solution [
+      res:binding [ res:variable "MeSH_Term" ; res:value "Plant Roots" ] ;
+      res:binding [ res:variable "MeSH_Description" ; res:value "The usually underground portions of a plant that serve as support, store food, and through which water and mineral nutrients enter the plant. (From American Heritage Dictionary, 1982; Concise Dictionary of Biology, 1990)" ] ] .
+

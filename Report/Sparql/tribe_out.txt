@@ -1,0 +1,200 @@
+  1 PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  2 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  3 PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  4 PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  5 PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  6 PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  7 PREFIX  local: <http://naese.local/>
+  8 
+  9 SELECT DISTINCT  ?id ?tribe ?subject ?title ?subClassOf
+ 10 WHERE
+ 11   { FILTER regex(?tribe, "Cherokee", "i")
+ 12     ?member foaf:name ?tribe .
+ 13     ?member dc:title ?title .
+ 14     ?id foaf:member ?member .
+ 15     ?id dc:subject ?subject .
+ 16     ?id owl:sameAs ?sameAs .
+ 17     ?member rdfs:subClassOf ?subClassOf
+ 18   }
+ 19 ORDER BY ?subClassOf ?subject
+
+06:24:29 INFO  exec                 :: QUERY
+  PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX  local: <http://naese.local/>
+  
+  SELECT DISTINCT  ?id ?tribe ?subject ?title ?subClassOf
+  WHERE
+    { FILTER regex(?tribe, "Cherokee", "i")
+      ?member foaf:name ?tribe .
+      ?member dc:title ?title .
+      ?id foaf:member ?member .
+      ?id dc:subject ?subject .
+      ?id owl:sameAs ?sameAs .
+      ?member rdfs:subClassOf ?subClassOf
+    }
+  ORDER BY ?subClassOf ?subject
+06:24:29 INFO  exec                 :: ALGEBRA
+  (order (?subClassOf ?subject)
+    (distinct
+      (project (?id ?tribe ?subject ?title ?subClassOf)
+        (filter (regex ?tribe "Cherokee" "i")
+          (quadpattern
+            (quad <urn:x-arq:DefaultGraphNode> ?member <http://xmlns.com/foaf/0.1/name> ?tribe)
+            (quad <urn:x-arq:DefaultGraphNode> ?member <http://purl.org/dc/elements/1.1/title> ?title)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?member)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://purl.org/dc/elements/1.1/subject> ?subject)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2002/07/owl#sameAs> ?sameAs)
+            (quad <urn:x-arq:DefaultGraphNode> ?member <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?subClassOf)
+          )))))
+06:24:29 INFO  exec                 :: TDB
+  (order (?subClassOf ?subject)
+    (distinct
+      (project (?id ?tribe ?subject ?title ?subClassOf)
+        (filter (regex ?tribe "Cherokee" "i")
+          (quadpattern
+            (quad <urn:x-arq:DefaultGraphNode> ?member <http://xmlns.com/foaf/0.1/name> ?tribe)
+            (quad <urn:x-arq:DefaultGraphNode> ?member <http://purl.org/dc/elements/1.1/title> ?title)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?member)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://purl.org/dc/elements/1.1/subject> ?subject)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://www.w3.org/2002/07/owl#sameAs> ?sameAs)
+            (quad <urn:x-arq:DefaultGraphNode> ?member <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?subClassOf)
+          )))))
+06:24:29 INFO  exec                 :: Execute
+(?id <http://purl.org/dc/elements/1.1/subject> ?subject)
+(?id <http://xmlns.com/foaf/0.1/member> ?member)
+(?member <http://xmlns.com/foaf/0.1/name> ?tribe)
+06:24:29 INFO  exec                 :: Execute
+(?member <http://purl.org/dc/elements/1.1/title> ?title)
+(?id <http://www.w3.org/2002/07/owl#sameAs> ?sameAs)
+(?member rdfs:subClassOf ?subClassOf)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| id          | tribe      | subject                                            | title                                                                           | subClassOf             |
+============================================================================================================================================================================================
+| local:10730 | "Cherokee" | "Cornus alternifolia L. f."                        | "Bark chewed for headache"                                                      | "Analgesic"            |
+| local:10734 | "Cherokee" | "Cornus florida L."                                | "Bark chewed for headache"                                                      | "Analgesic"            |
+| local:11342 | "Cherokee" | "Humulus lupulus L."                               | "Alleviates pain and produces sleep"                                            | "Analgesic"            |
+| local:11925 | "Cherokee" | "Panax trifolius L."                               | "An ingredient to relieve sharp pains in the breast"                            | "Analgesic"            |
+| local:12527 | "Cherokee" | "Salix sp."                                        | "Bark chewed for headache"                                                      | "Analgesic"            |
+| local:11566 | "Cherokee" | "Liriodendron tulipifera L."                       | "Bark used for choloera infantum, dyspepsy, dysentery and rheumatism"           | "Antidiarrheal"        |
+| local:12087 | "Cherokee" | "Pinus glabra Walt."                               | "Bark chewed to check bowels"                                                   | "Antidiarrheal"        |
+| local:12098 | "Cherokee" | "Pinus virginiana P. Mill."                        | "Bark chewed to check bowels"                                                   | "Antidiarrheal"        |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark used for chronic dysentery"                                               | "Antidiarrheal"        |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark used for chronic dysentery"                                               | "Antidiarrheal"        |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark used for chronic dysentery"                                               | "Antidiarrheal"        |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark used for chronic dysentery"                                               | "Antidiarrheal"        |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark used for chronic dysentery"                                               | "Antidiarrheal"        |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark used for chronic dysentery"                                               | "Antidiarrheal"        |
+| local:13042 | "Cherokee" | "Xanthorhiza simplicissima Marsh."                 | "Ashes burnt from greenswitch used for cancer"                                  | "Cancer Treatment"     |
+| local:12361 | "Cherokee" | "Rhamnus cathartica L."                            | "Bark and fruit used as a cathartic"                                            | "Cathartic"            |
+| local:10029 | "Cherokee" | "Achillea millefolium L."                          | "Astringent leaves used for hemorrhages and bowel complaints"                   | "Dermatological Aid"   |
+| local:10117 | "Cherokee" | "Amaranthus hybridus L."                           | "Astringent leaves used for profuse menstruation"                               | "Dermatological Aid"   |
+| local:10118 | "Cherokee" | "Amaranthus retroflexus L."                        | "Astringent leaves used for profuse menstruation"                               | "Dermatological Aid"   |
+| local:10119 | "Cherokee" | "Amaranthus spinosus L."                           | "Astringent leaves used for profuse menstruation"                               | "Dermatological Aid"   |
+| local:10216 | "Cherokee" | "Aralia racemosa L."                               | "Astringent infusion taken for menstrual problems"                              | "Dermatological Aid"   |
+| local:10476 | "Cherokee" | "Calycanthus floridus L."                          | "Bark ooze used on children's sores and infusion used for hives"                | "Dermatological Aid"   |
+| local:10517 | "Cherokee" | "Carya alba"                                       | "Astringent and detergent inner bark used as dressing for cuts"                 | "Dermatological Aid"   |
+| local:10517 | "Cherokee" | "Carya alba"                                       | "Bark used as a dressing for cuts"                                              | "Dermatological Aid"   |
+| local:10520 | "Cherokee" | "Carya laciniosa"                                  | "Astringent and detergent inner bark used as dressing for cuts"                 | "Dermatological Aid"   |
+| local:10520 | "Cherokee" | "Carya laciniosa"                                  | "Bark used as a dressing for cuts"                                              | "Dermatological Aid"   |
+| local:10522 | "Cherokee" | "Carya pallida"                                    | "Astringent and detergent inner bark used as dressing for cuts"                 | "Dermatological Aid"   |
+| local:10522 | "Cherokee" | "Carya pallida"                                    | "Bark used as a dressing for cuts"                                              | "Dermatological Aid"   |
+| local:10879 | "Cherokee" | "Diospyros virginiana L."                          | "Astringent plant used for sore throat and mouth"                               | "Dermatological Aid"   |
+| local:11009 | "Cherokee" | "Erigeron philadelphicus L."                       | "Astringent plant boiled, mixed with tallow and used on sores"                  | "Dermatological Aid"   |
+| local:11010 | "Cherokee" | "Erigeron pulchellus Michx."                       | "Astringent plant boiled, mixed with tallow and used on sores"                  | "Dermatological Aid"   |
+| local:11084 | "Cherokee" | "Euonymus americana L."                            | "Astringent infusion of bark sniffed for sinus"                                 | "Dermatological Aid"   |
+| local:11197 | "Cherokee" | "Geranium maculatum L."                            | "Astringent, compound decoction used as a wash for thrush in child's mouth"     | "Dermatological Aid"   |
+| local:11909 | "Cherokee" | "Oxydendrum arboreum"                              | "Bark ooze used for itch"                                                       | "Dermatological Aid"   |
+| local:12124 | "Cherokee" | "Platanus occidentalis L."                         | "Bark ooze used as wash for infected sores and infusion given for infant rash"  | "Dermatological Aid"   |
+| local:12238 | "Cherokee" | "Prunus cerasus L."                                | "Astringent root bark used in a wash for old sores and ulcers"                  | "Dermatological Aid"   |
+| local:12242 | "Cherokee" | "Prunus pensylvanica L. f."                        | "Astringent root bark used in a wash for old sores and ulcers"                  | "Dermatological Aid"   |
+| local:12244 | "Cherokee" | "Prunus serotina Ehrh."                            | "Astringent root bark used in a wash for old sores and ulcers"                  | "Dermatological Aid"   |
+| local:12246 | "Cherokee" | "Prunus virginiana L."                             | "Astringent root bark used in a wash for old sores and ulcers"                  | "Dermatological Aid"   |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Astringent bark chewed for mouth sores"                                        | "Dermatological Aid"   |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Astringent bark chewed for mouth sores"                                        | "Dermatological Aid"   |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Astringent bark chewed for mouth sores"                                        | "Dermatological Aid"   |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Astringent bark chewed for mouth sores"                                        | "Dermatological Aid"   |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Astringent bark chewed for mouth sores"                                        | "Dermatological Aid"   |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Astringent bark chewed for mouth sores"                                        | "Dermatological Aid"   |
+| local:12496 | "Cherokee" | "Salix alba L."                                    | "Bark used as a poultice"                                                       | "Dermatological Aid"   |
+| local:12510 | "Cherokee" | "Salix humilis Marsh."                             | "Bark used as a poultice"                                                       | "Dermatological Aid"   |
+| local:12518 | "Cherokee" | "Salix nigra Marsh."                               | "Bark used as a poultice"                                                       | "Dermatological Aid"   |
+| local:12521 | "Cherokee" | "Salix pendulina Wenderoth [babylonica  fragilis]" | "Bark used as a poultice"                                                       | "Dermatological Aid"   |
+| local:12660 | "Cherokee" | "Smilax laurifolia L."                             | "Astringent and slightly tonic root bark used as a wash for burns and sores"    | "Dermatological Aid"   |
+| local:12966 | "Cherokee" | "Verbena hastata L."                               | "Astringent root compound taken for flux"                                       | "Dermatological Aid"   |
+| local:13042 | "Cherokee" | "Xanthorhiza simplicissima Marsh."                 | "Astringent and tonic infusion of root used for piles"                          | "Dermatological Aid"   |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark used as an antiseptic"                                                    | "Disinfectant"         |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark used as an antiseptic"                                                    | "Disinfectant"         |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark used as an antiseptic"                                                    | "Disinfectant"         |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark used as an antiseptic"                                                    | "Disinfectant"         |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark used as an antiseptic"                                                    | "Disinfectant"         |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark used as an antiseptic"                                                    | "Disinfectant"         |
+| local:12289 | "Cherokee" | "Purshia stansburiana"                             | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12363 | "Cherokee" | "Rhamnus sp."                                      | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12502 | "Cherokee" | "Salix caroliniana Michx."                         | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12542 | "Cherokee" | "Sambucus racemosa L."                             | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12916 | "Cherokee" | "Tsuga heterophylla"                               | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12917 | "Cherokee" | "Tsuga mertensiana"                                | "Bark used as an emetic"                                                        | "Emetic"               |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark used after long, intermittent fevers and as a wash for chills and fevers" | "Febrifuge"            |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark used after long, intermittent fevers and as a wash for chills and fevers" | "Febrifuge"            |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark used after long, intermittent fevers and as a wash for chills and fevers" | "Febrifuge"            |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark used after long, intermittent fevers and as a wash for chills and fevers" | "Febrifuge"            |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark used after long, intermittent fevers and as a wash for chills and fevers" | "Febrifuge"            |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark used after long, intermittent fevers and as a wash for chills and fevers" | "Febrifuge"            |
+| local:10879 | "Cherokee" | "Diospyros virginiana L."                          | "Bark chewed for heartburn"                                                     | "Gastrointestinal Aid" |
+| local:11347 | "Cherokee" | "Hydrangea arborescens L."                         | "Bark chewed for stomach trouble"                                               | "Gastrointestinal Aid" |
+| local:11566 | "Cherokee" | "Liriodendron tulipifera L."                       | "Bark used for dyspepsy, dysentery and rheumatism"                              | "Gastrointestinal Aid" |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark used for indigestion and any debility of the system"                      | "Gastrointestinal Aid" |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark used for indigestion and any debility of the system"                      | "Gastrointestinal Aid" |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark used for indigestion and any debility of the system"                      | "Gastrointestinal Aid" |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark used for indigestion and any debility of the system"                      | "Gastrointestinal Aid" |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark used for indigestion and any debility of the system"                      | "Gastrointestinal Aid" |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark used for indigestion and any debility of the system"                      | "Gastrointestinal Aid" |
+| local:11347 | "Cherokee" | "Hydrangea arborescens L."                         | "Bark chewed for high blood pressure"                                           | "Hypotensive"          |
+| local:11566 | "Cherokee" | "Liriodendron tulipifera L."                       | "Bark used for dyspepsy, dysentery and rheumatism"                              | "Internal"             |
+| local:10517 | "Cherokee" | "Carya alba"                                       | "Bark chewed for sore mouth"                                                    | "Oral Aid"             |
+| local:10520 | "Cherokee" | "Carya laciniosa"                                  | "Bark chewed for sore mouth"                                                    | "Oral Aid"             |
+| local:10522 | "Cherokee" | "Carya pallida"                                    | "Bark chewed for sore mouth"                                                    | "Oral Aid"             |
+| local:11909 | "Cherokee" | "Oxydendrum arboreum"                              | "Bark chewed for mouth ulcers"                                                  | "Oral Aid"             |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark chewed for mouth sores"                                                   | "Oral Aid"             |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark chewed for mouth sores"                                                   | "Oral Aid"             |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark chewed for mouth sores"                                                   | "Oral Aid"             |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark chewed for mouth sores"                                                   | "Oral Aid"             |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark chewed for mouth sores"                                                   | "Oral Aid"             |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark chewed for mouth sores"                                                   | "Oral Aid"             |
+| local:12485 | "Cherokee" | "Ruta graveolens L."                               | "Added to whiskey and taken for palsy"                                          | "Orthopedic Aid"       |
+| local:10476 | "Cherokee" | "Calycanthus floridus L."                          | "Bark ooze used on children's sores and infusion used for hives"                | "Pediatric Aid"        |
+| local:11433 | "Cherokee" | "Juglans nigra L."                                 | "Bark used cautiously in medicine because it is poisonous"                      | "Poison"               |
+| local:10004 | "Cherokee" | "Abies fraseri"                                    | "Balsam for breast and lung complaints with pain, soreness or cough"            | "Pulmonary Aid"        |
+| local:11342 | "Cherokee" | "Humulus lupulus L."                               | "Alleviates pain and produces sleep"                                            | "Sedative"             |
+| local:12485 | "Cherokee" | "Ruta graveolens L."                               | "Added to whiskey and taken for hysterics"                                      | "Sedative"             |
+| local:12861 | "Cherokee" | "Tilia americana L."                               | "Bark from tree struck by lightning chewed and spit on snakebite"               | "Snake Bite Remedy"    |
+| local:12862 | "Cherokee" | "Tilia americana var. heterophylla"                | "Bark from tree struck by lightning chewed and spit on snakebite"               | "Snake Bite Remedy"    |
+| local:10107 | "Cherokee" | "Alnus rubra Bong."                                | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:11251 | "Cherokee" | "Gymnocladus dioicus"                              | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12239 | "Cherokee" | "Prunus emarginata"                                | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12309 | "Cherokee" | "Quercus alba L."                                  | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12315 | "Cherokee" | "Quercus falcata Michx."                           | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12320 | "Cherokee" | "Quercus imbricaria Michx."                        | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12329 | "Cherokee" | "Quercus rubra L."                                 | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12333 | "Cherokee" | "Quercus stellata Wangenh."                        | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12334 | "Cherokee" | "Quercus velutina Lam."                            | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12496 | "Cherokee" | "Salix alba L."                                    | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12510 | "Cherokee" | "Salix humilis Marsh."                             | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12518 | "Cherokee" | "Salix nigra Marsh."                               | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12521 | "Cherokee" | "Salix pendulina Wenderoth [babylonica  fragilis]" | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:12705 | "Cherokee" | "Sorbus scopulina Greene"                          | "Bark used as a tonic"                                                          | "Tonic"                |
+| local:10567 | "Cherokee" | "Cephalanthus occidentalis L."                     | "Bark chewed for toothache"                                                     | "Toothache Remedy"     |
+| local:11433 | "Cherokee" | "Juglans nigra L."                                 | "Bark chewed for toothache"                                                     | "Toothache Remedy"     |
+| local:12527 | "Cherokee" | "Salix sp."                                        | "Bark chewed for toothache"                                                     | "Toothache Remedy"     |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

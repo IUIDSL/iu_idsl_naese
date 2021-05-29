@@ -1,0 +1,91 @@
+  1 PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  2 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  3 PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  4 PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  5 PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  6 PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  7 PREFIX  local: <http://naese.local/>
+  8 
+  9 SELECT DISTINCT  ?id ?subject ?tribe ?title ?subClassOf
+ 10 WHERE
+ 11   { FILTER regex(?subClassOf, "Toothache", "i")
+ 12     ?usage rdfs:subClassOf ?subClassOf .
+ 13     ?usage foaf:name ?tribe .
+ 14     ?usage dc:title ?title .
+ 15     ?id foaf:member ?usage .
+ 16     ?id dc:subject ?subject
+ 17   }
+ 18 ORDER BY ?subject ?tribe
+
+06:25:20 INFO  exec                 :: QUERY
+  PREFIX  dc:   <http://purl.org/dc/elements/1.1/>
+  PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+  PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX  local: <http://naese.local/>
+  
+  SELECT DISTINCT  ?id ?subject ?tribe ?title ?subClassOf
+  WHERE
+    { FILTER regex(?subClassOf, "Toothache", "i")
+      ?usage rdfs:subClassOf ?subClassOf .
+      ?usage foaf:name ?tribe .
+      ?usage dc:title ?title .
+      ?id foaf:member ?usage .
+      ?id dc:subject ?subject
+    }
+  ORDER BY ?subject ?tribe
+06:25:20 INFO  exec                 :: ALGEBRA
+  (order (?subject ?tribe)
+    (distinct
+      (project (?id ?subject ?tribe ?title ?subClassOf)
+        (filter (regex ?subClassOf "Toothache" "i")
+          (quadpattern
+            (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?subClassOf)
+            (quad <urn:x-arq:DefaultGraphNode> ?usage <http://xmlns.com/foaf/0.1/name> ?tribe)
+            (quad <urn:x-arq:DefaultGraphNode> ?usage <http://purl.org/dc/elements/1.1/title> ?title)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?usage)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://purl.org/dc/elements/1.1/subject> ?subject)
+          )))))
+06:25:20 INFO  exec                 :: TDB
+  (order (?subject ?tribe)
+    (distinct
+      (project (?id ?subject ?tribe ?title ?subClassOf)
+        (filter (regex ?subClassOf "Toothache" "i")
+          (quadpattern
+            (quad <urn:x-arq:DefaultGraphNode> ?usage <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?subClassOf)
+            (quad <urn:x-arq:DefaultGraphNode> ?usage <http://xmlns.com/foaf/0.1/name> ?tribe)
+            (quad <urn:x-arq:DefaultGraphNode> ?usage <http://purl.org/dc/elements/1.1/title> ?title)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://xmlns.com/foaf/0.1/member> ?usage)
+            (quad <urn:x-arq:DefaultGraphNode> ?id <http://purl.org/dc/elements/1.1/subject> ?subject)
+          )))))
+06:25:20 INFO  exec                 :: Execute
+(?id <http://purl.org/dc/elements/1.1/subject> ?subject)
+(?id <http://xmlns.com/foaf/0.1/member> ?usage)
+(?usage rdfs:subClassOf ?subClassOf)
+06:25:20 INFO  exec                 :: Execute
+(?usage <http://xmlns.com/foaf/0.1/name> ?tribe)
+(?usage <http://purl.org/dc/elements/1.1/title> ?title)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+| id          | subject                           | tribe             | title                                                         | subClassOf         |
+============================================================================================================================================================
+| local:10061 | "Aesculus californica"            | "Mendocino"       | "Bark placed in cavity of tooth for toothaches"               | "Toothache Remedy" |
+| local:10567 | "Cephalanthus occidentalis L."    | "Cherokee"        | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:10567 | "Cephalanthus occidentalis L."    | "Choctaw"         | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:10567 | "Cephalanthus occidentalis L."    | "Choctaw"         | "Bark chewed for toothaches"                                  | "Toothache Remedy" |
+| local:10567 | "Cephalanthus occidentalis L."    | "Kiowa"           | "Bark chewed for toothaches"                                  | "Toothache Remedy" |
+| local:10567 | "Cephalanthus occidentalis L."    | "Thompson"        | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:11433 | "Juglans nigra L."                | "Cherokee"        | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:11433 | "Juglans nigra L."                | "Choctaw"         | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:11433 | "Juglans nigra L."                | "Thompson"        | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:12527 | "Salix sp."                       | "Cherokee"        | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:12527 | "Salix sp."                       | "Choctaw"         | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:12527 | "Salix sp."                       | "Choctaw"         | "Bark chewed for toothaches"                                  | "Toothache Remedy" |
+| local:12527 | "Salix sp."                       | "Kiowa"           | "Bark chewed for toothaches"                                  | "Toothache Remedy" |
+| local:12527 | "Salix sp."                       | "Thompson"        | "Bark chewed for toothache"                                   | "Toothache Remedy" |
+| local:12542 | "Sambucus racemosa L."            | "Okanagon"        | "Bark placed in the hollow of a tooth for toothaches"         | "Toothache Remedy" |
+| local:12542 | "Sambucus racemosa L."            | "Thompson"        | "Bark placed in the hollow of a tooth for toothaches"         | "Toothache Remedy" |
+| local:12616 | "Shepherdia rotundifolia Parry"   | "Navajo, Kayenta" | "Ash used as lotion for toothaches"                           | "Toothache Remedy" |
+| local:13057 | "Zanthoxylum americanum P. Mill." | "Iroquois"        | "Bark smoked, chewed or placed into the tooth for toothaches" | "Toothache Remedy" |
+------------------------------------------------------------------------------------------------------------------------------------------------------------

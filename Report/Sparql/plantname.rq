@@ -1,0 +1,25 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX tax: <http://bio2rdf.org/taxonomy:>
+PREFIX mesh: <http://bio2rdf.org/mesh:>
+PREFIX usda: <http://plants.usda.gov/core/profile?symbol=>
+PREFIX local: <http://naese.local/>
+
+SELECT
+  ?common_name ?tribe ?title ?medical_class ?plants_uri ?mesh_id ?ncbi_tax
+WHERE
+{
+  ?id dc:subject 'Hibiscus tiliaceus L.' .
+  ?id rdf:subject ?common_name .
+  ?id rdfs:seeAlso ?plants_uri .
+  ?id owl:sameAs ?ncbi_tax .
+  ?id foaf:member ?usage .
+  ?usage dc:title ?title .
+  ?usage foaf:name ?tribe .
+  ?usage rdfs:subClassOf ?medical_class .
+  ?usage rdfs:subPropertyOf ?mesh_id .
+}

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: NativeAmericanEthnobotany.aux
+The style file: abbrv.bst
+Database file #1: NativeAmericanEthnobotany.bib
+Warning--I didn't find a database entry for "moerman:db"
+You've used 20 entries,
+            2118 wiz_defined-function locations,
+            638 strings with 8249 characters,
+and the built_in function-call counts, 7953 in all, are:
+= -- 722
+> -- 546
+< -- 4
++ -- 219
+- -- 195
+* -- 690
+:= -- 1387
+add.period$ -- 60
+call.type$ -- 20
+change.case$ -- 153
+chr.to.int$ -- 0
+cite$ -- 20
+duplicate$ -- 232
+empty$ -- 506
+format.name$ -- 195
+if$ -- 1562
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 22
+newline$ -- 102
+num.names$ -- 42
+pop$ -- 145
+preamble$ -- 1
+purify$ -- 136
+quote$ -- 0
+skip$ -- 154
+stack$ -- 0
+substring$ -- 402
+swap$ -- 33
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 74
+warning$ -- 0
+while$ -- 66
+width$ -- 22
+write$ -- 219
+(There was 1 warning)
